@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using web_home.Models;
 using web_home.Unitl;
 
 namespace web_home.BLL
@@ -10,30 +11,33 @@ namespace web_home.BLL
     public class T_UserBLL
     {
         public static DContext context = new DContext();
-        public static IRedisClient Redis = RedisManager.GetClient();
         /// <summary>
-        /// 登录
+        /// 注册
         /// </summary>
-        /// <param name="uaccount"></param>
+        /// <param name="email"></param>
         /// <param name="password"></param>
+        /// <param name="type"> 注册方式(1:手机号注册  2 邮箱注册)</param>
+        /// <param name="platform"></param>
+        /// <param name="phone"></param>
+        /// <param name="code">推荐码</param>
         /// <returns></returns>
-        public string login(string uaccount, string password)
+        public GeneralResult<t_user> Register(string email, string password, int type, int platform, string phone, string code)
         {
-            password = Tool.MD5Encrypt16(password);
-            var model=context.t_user.Where(p => p.uaccount == uaccount && p.password == password).FirstOrDefault();
-            if (model == null)
+            password = Tool.MD5Encrypt16(password);//将密码加密 MD5算法
+            var result = new GeneralResult<t_user>();
+            var model = context.t_user.Where(p => p.email == email && p.password == password && p.type == type && p.phone == phone && p.platform == platform).FirstOrDefault();
+            if (model != null)
             {
-                return "账户或密码错误";
+                result.SetFail("注册失败，该账户已经注册过了!");
             }
             else
             {
-               //判断密码是否正确 ，将密码重新加密一次，与之前进行比对
-               model.token= Guid.NewGuid().ToString();
-               TimeSpan ts = new TimeSpan(0, 5, 0);//设置过期时间为五分钟
-               Redis.Set("UserInfo:" + model.uid, model.token,ts);
-               context.SaveChanges();
-               return "成功";
+                var user = new t_user { platform = platform, phone = phone, type = type, password = password, email = email, code = code };
+                context.t_user.Add(user);
+                context.SaveChanges();
+                result.SetSuccess(user, "成功");
             }
+            return result;
         }
     }
 }

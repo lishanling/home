@@ -64,7 +64,7 @@ namespace web_home.Models
     {
         public static void SetSuccess(this GeneralResult result, object data = null, string msg = "操作成功")
         {
-            result.code =Convert.ToInt32( GeneralResultState.Okay);
+            result.code = Convert.ToInt32(GeneralResultState.Okay);
             result.Success = true;
             result.Data = data;
             result.message = msg;
@@ -73,11 +73,11 @@ namespace web_home.Models
 
         public static void SetFail(this GeneralResult result, string msg, Exception e = null, object data = null)
         {
-            result.code = Convert.ToInt32( GeneralResultState.BadRequest);
+            result.code = Convert.ToInt32(GeneralResultState.BadRequest);
             result.Success = false;
             result.Data = data;
             result.message = msg;
-            result.Exception = e.ToString();
+            result.Exception = e == null ? null : e.ToString();
             if (e != null && e is NullReferenceException)
             {
                 result.message = "请求的对象不存在";
@@ -105,7 +105,7 @@ namespace web_home.Models
                 result.Data = new { requestid = requestid };
             }
             result.message = msg;
-            result.Exception = e.ToString();
+            result.Exception = e == null ? null : e.ToString();
             if (e != null)
             {
 
@@ -131,11 +131,11 @@ namespace web_home.Models
         /// <param name="e"></param>
         public static void SetUnauthorized(this GeneralResult result, string msg, Exception e = null)
         {
-            result.code = Convert.ToInt32( GeneralResultState.Unauthorized);
+            result.code = Convert.ToInt32(GeneralResultState.Unauthorized);
             result.Success = false;
             result.Data = null;
             result.message = msg;
-            result.Exception = e.ToString();
+            result.Exception = e == null ? null : e.ToString();
         }
         /// <summary>
         /// 超时
@@ -145,11 +145,11 @@ namespace web_home.Models
         /// <param name="e"></param>
         public static void SetTimeout(this GeneralResult result, string msg = "请求超时", Exception e = null)
         {
-            result.code = Convert.ToInt32( GeneralResultState.RequestTimeout);
+            result.code = Convert.ToInt32(GeneralResultState.RequestTimeout);
             result.Success = false;
             //result.Data = null;
             result.message = msg;
-            result.Exception = e.ToString();
+            result.Exception = e == null ? null : e.ToString();
         }
 
         public static void SetSuccessT<T>(this GeneralResult<T> result, T data, string msg = "操作成功")

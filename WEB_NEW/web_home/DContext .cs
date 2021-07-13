@@ -19,8 +19,8 @@ namespace web_home
         }
 
         #region 数据集
-        public DbSet<Study> Study { get; set; }
-        public DbSet<classmate> classmate { get; set; }
+
+        public DbSet<t_download_info> download_info { get; set; }
 
         public DbSet<t_user> t_user { get; set; }
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -29,7 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -212,29 +212,29 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BLL\StudyBLL.cs" />
+    <Compile Include="BLL\T_DownloadInfoBLL.cs" />
     <Compile Include="BLL\T_UserBLL.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\TDownloadInfoController.cs" />
     <Compile Include="Controllers\TUserController.cs" />
-    <Compile Include="Controllers\StudyController.cs" />
     <Compile Include="DContext .cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\classmate.cs" />
-    <Compile Include="Models\CustomResult.cs" />
-    <Compile Include="Models\GeneralResult.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Model1.cs" />
-    <Compile Include="Models\PageIm.cs" />
-    <Compile Include="Models\PageTableResult.cs" />
-    <Compile Include="Models\Study.cs" />
+    <Compile Include="Models\ModelData.cs" />
+    <Compile Include="Models\tools\AccountViewModels.cs" />
+    <Compile Include="Models\tools\CustomResult.cs" />
+    <Compile Include="Models\tools\GeneralResult.cs" />
+    <Compile Include="Models\tools\IdentityModels.cs" />
+    <Compile Include="Models\tools\ManageViewModels.cs" />
+    <Compile Include="Models\tools\PageIm.cs" />
+    <Compile Include="Models\tools\PageTableResult.cs" />
+    <Compile Include="Models\t_download_info.cs" />
     <Compile Include="Models\t_user.cs" />
-    <Compile Include="Models\ValidateCodeUtils.cs" />
+    <Compile Include="Models\tools\ValidateCodeUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Unitl\AESEncryptUtils.cs" />
@@ -246,6 +246,7 @@
     <Compile Include="Unitl\Tool.cs" />
     <Compile Include="Unitl\ObjectExtension.cs" />
     <Compile Include="Unitl\PageHelper.cs" />
+    <Compile Include="Unitl\ValidataCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

@@ -21,7 +21,23 @@ namespace web_home.Models
         public int? state { get; set; }
 
         public int? roleId { get; set; }
-         [StringLength(50)]
+
+        [StringLength(50)]
         public string token { get; set; }
+
+        public int? type { get; set; }
+
+        [StringLength(200)]
+        public string code { get; set; }
+
+        [StringLength(200)]
+        public string email { get; set; }
+
+        [StringLength(30)]
+        public string phone { get; set; }
+
+        public int? platform { get; set; }
+
+        public DateTime? updateTime { get; set; }
     }
 }
