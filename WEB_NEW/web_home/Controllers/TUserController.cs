@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,25 +12,37 @@ namespace web_home.Controllers
 {
     public class TUserController : BaseController
     {
+        public static ILog logger = LogManager.GetLogger(typeof(T_UserBLL));
         [HttpPost]
         public ActionResult Register(string email, string password, int type, int platform, string phone, string code, string validatacode)
         {
             T_UserBLL s = new T_UserBLL();
-            var temp = TempData["SecurityCode"];
-            if (!temp.Equals(validatacode))
+            var t = new GeneralResult<t_user>();
+            GeneralResult<t_user> result=new GeneralResult<t_user>();
+            try
             {
-                  var t = new GeneralResult<t_user>();
-                  t.SetFail("验证码不正确");
-                  return JRestlt(t);
+                var temp = TempData["SecurityCode"];
+                if (!temp.Equals(validatacode))
+                {
+                    t.SetFail("验证码不正确");
+                    logger.Warn("出错了:" );
+                    return JRestlt(t);
+                }
+                 result = s.Register(email, password, type, platform, phone, code);
             }
-            var result = s.Register(email, password, type, platform, phone, code);
+            catch(Exception e)
+            {
+                t.SetFail("验证码不正确");
+                logger.Debug("出错了:"+e.Message);
+                return JRestlt(t);
+            }
             return JRestlt(result);
         }
         /// <summary>
         /// 图形验证码
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         public ActionResult SecurityCode()
         {
             string oldcode = TempData["SecurityCode"] as string;

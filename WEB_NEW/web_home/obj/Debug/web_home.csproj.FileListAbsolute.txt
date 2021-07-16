@@ -177,4 +177,17 @@ D:\work\代码\Back\WEB_NEW\web_home\bin\zh-Hans\Microsoft.Owin.Security.Google.
 D:\work\代码\Back\WEB_NEW\web_home\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
 D:\work\代码\Back\WEB_NEW\web_home\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 D:\work\代码\Back\WEB_NEW\web_home\obj\Debug\web_home.pdb
+D:\work\代码\Back\WEB_NEW\web_home\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+D:\work\代码\Back\WEB_NEW\web_home\bin\Swashbuckle.Core.dll
+D:\work\代码\Back\WEB_NEW\web_home\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\work\代码\Back\WEB_NEW\web_home\bin\System.Net.Http.Formatting.dll
+D:\work\代码\Back\WEB_NEW\web_home\bin\System.Web.Http.dll
+D:\work\代码\Back\WEB_NEW\web_home\bin\System.Web.Http.WebHost.dll
+D:\work\代码\Back\WEB_NEW\web_home\bin\WebActivatorEx.dll
+D:\work\代码\Back\WEB_NEW\web_home\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\work\代码\Back\WEB_NEW\web_home\bin\System.Net.Http.Formatting.xml
+D:\work\代码\Back\WEB_NEW\web_home\bin\System.Web.Http.xml
+D:\work\代码\Back\WEB_NEW\web_home\bin\System.Web.Http.WebHost.xml
 D:\work\代码\Back\WEB_NEW\web_home\obj\Debug\web_home.csprojResolveAssemblyReference.cache
+D:\work\代码\Back\WEB_NEW\web_home\bin\log4net.dll
+D:\work\代码\Back\WEB_NEW\web_home\bin\log4net.xml

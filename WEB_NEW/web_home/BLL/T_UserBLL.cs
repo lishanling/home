@@ -23,16 +23,17 @@ namespace web_home.BLL
         /// <returns></returns>
         public GeneralResult<t_user> Register(string email, string password, int type, int platform, string phone, string code)
         {
+            
             password = Tool.MD5Encrypt16(password);//将密码加密 MD5算法
             var result = new GeneralResult<t_user>();
-            var model = context.t_user.Where(p => p.email == email && p.password == password && p.type == type && p.phone == phone && p.platform == platform).FirstOrDefault();
+            var model = context.t_user.Where(p => p.email == (email == null ? null : email.ToString()) && p.password == password && p.type == type && p.phone == (phone == null ? null : phone.ToString()) && p.platform == platform).FirstOrDefault();
             if (model != null)
             {
                 result.SetFail("注册失败，该账户已经注册过了!");
             }
             else
             {
-                var user = new t_user { platform = platform, phone = phone, type = type, password = password, email = email, code = code };
+                var user = new t_user { platform = platform, phone = (phone == null ? null : phone.ToString()), type = type, password = password, email = (email == null ? null : email.ToString()), updateTime=DateTime.Now, code = (code==null ? null :code.ToString()) };
                 context.t_user.Add(user);
                 context.SaveChanges();
                 result.SetSuccess(user, "成功");

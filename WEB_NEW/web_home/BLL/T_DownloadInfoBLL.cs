@@ -14,8 +14,8 @@ namespace web_home.BLL
         /// <summary>
         /// 下载地址获取
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="platform"></param>
+        /// <param name="type2">类型 （1. APP  2 PC）</param>
+        /// <param name="platform">平台编号</param>
         /// <returns></returns>
         public GeneralResult<t_download_info> download(int type2, int platform)
         {
